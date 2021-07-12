@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------------------
+# -*- coding: utf-8 -*-
+# @Author:              Gifty Attiah
+# @Date:                2021-01-17
+# @Email:               geattiah@gmail.com
+# @Last Modified By:    Gifty Attiah
+# @Last Modified Time:  Not Tracked
+# 
+# PROGRAM DESCRIPTION:
+# Crop netcdf with xarray
+# ----------------------------------------------------------------------------
+
 import xarray
 import rioxarray
 import geopandas
@@ -11,7 +23,7 @@ xds = xarray.open_dataset(ncdf_file)
 xds = xds[['10m_u_component_of_wind','10m_v_component_of_wind','2m_temperature','snowfall','total_cloud_cover']].transpose('time', 'lat', 'lon')
 xds.rio.set_spatial_dims(x_dim= "lon", y_dim= "lat", inplace=True)
 xds.rio.write_crs("EPSG:4326", inplace=True)
-#geodf = geopandas.read_file(shp_file, crs="epsg:4326")
+geodf = geopandas.read_file(shp_file, crs="epsg:4326")
 
 storage_path = r"C:/Users/ReSEC2021/Downloads/output_true.nc"
 

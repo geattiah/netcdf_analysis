@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------------------
+# -*- coding: utf-8 -*-
+# @Author:              Gifty Attiah
+# @Date:                2021-01-17
+# @Email:               geattiah@gmail.com
+# @Last Modified By:    Gifty Attiah
+# @Last Modified Time:  Not Tracked
+# 
+# PROGRAM DESCRIPTION:
+# Crop netcdf based on shapefile and create output
+# ----------------------------------------------------------------------------
+
 import xarray
 import rioxarray
 import geopandas

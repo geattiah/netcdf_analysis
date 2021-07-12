@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------------------
+# -*- coding: utf-8 -*-
+# @Author:              Gifty Attiah
+# @Date:                2021-02-19
+# @Email:               geattiah@gmail.com
+# @Last Modified By:    Gifty Attiah
+# @Last Modified Time:  Not Tracked
+# 
+# PROGRAM DESCRIPTION:
+# Unravelling latlong of netcdf file test code
+# ----------------------------------------------------------------------------
+
 # Standard Library imports
 import os
 import sys

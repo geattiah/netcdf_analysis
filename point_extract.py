@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------------------
+# -*- coding: utf-8 -*-
+# @Author:              Gifty Attiah
+# @Date:                2021-07-12
+# @Email:               geattiah@gmail.com
+# @Last Modified By:    Gifty Attiah
+# @Last Modified Time:  Not Tracked
+# 
+# PROGRAM DESCRIPTION:
+# Extract value from netcdf files based on lon and latitude and save as csv
+# ----------------------------------------------------------------------------
+
 from netCDF4 import Dataset
 import numpy as np
 import pandas as pd

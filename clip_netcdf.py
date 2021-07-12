@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------------------
+# -*- coding: utf-8 -*-
+# @Author:              Gifty Attiah
+# @Date:                2020-10-07
+# @Email:               geattiah@gmail.com
+# @Last Modified By:    Gifty Attiah
+# @Last Modified Time:  Not Tracked
+# 
+# PROGRAM DESCRIPTION:
+# crop netcdf data based on shapefile and plot
+# ----------------------------------------------------------------------------
+
 import geopandas
 import rioxarray
 import xarray
@@ -8,12 +20,12 @@ from mpl_toolkits.basemap import Basemap
 
 
 
-MSWEP_monthly2 = xarray.open_dataset('/home/gift/grace_1.nc')
-MSWEP_monthly2.rio.set_spatial_dims(x_dim="lon", y_dim="lat", inplace=True)
-MSWEP_monthly2.rio.write_crs("epsg:4326", inplace=True)
-Africa_Shape = geopandas.read_file("/home/gift/Downloads/Sel_lakes/Grace_Lake.shp")
+grace_netcdf = xarray.open_dataset('/home/gift/grace_1.nc')
+grace_netcdf.rio.set_spatial_dims(x_dim="lon", y_dim="lat", inplace=True)
+grace_netcdf.rio.write_crs("epsg:4326", inplace=True)
+grace_shape = geopandas.read_file("/home/gift/Downloads/Sel_lakes/Grace_Lake.shp")
 
-clipped = MSWEP_monthly2.rio.clip(Africa_Shape.geometry.apply(mapping), Africa_Shape.crs, drop=False)
+clipped = grace_netcdf.rio.clip(grace_shape.geometry.apply(mapping), grace_shape.crs, drop=False)
 
 
 pr = clipped.variables['Di'][0]
@@ -38,7 +50,7 @@ mp = Basemap(projection='merc',
 lon, lat = np.meshgrid(lons,lats)  #this converts coordinates into 2D arrray
 x,y = mp(lon,lat) #mapping them together
 plt.figure(figsize=(6,8)) #figure size
-c_scheme = mp.pcolor(x,y,np.squeeze(Di[0,:,:]),cmap = 'jet') # [0,:,:] is for t$
+c_scheme = mp.pcolor(x,y,np.squeeze(clipped[0,:,:]),cmap = 'jet') # [0,:,:] is for t$
 
 # consider this as the outline for the map that is to be created
 mp.drawcoastlines()
